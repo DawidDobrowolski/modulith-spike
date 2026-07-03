@@ -1,3 +1,5 @@
 spring:
   application:
     name: modulith-spike
+  modulith:
+    detection-strategy: dd.task.modulith.spike.infrastructure.config.CustomModuleDetectionStrategy
