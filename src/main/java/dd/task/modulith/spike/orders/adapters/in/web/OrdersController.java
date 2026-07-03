@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ class OrdersController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Order> find(@PathVariable String id) {
+    ResponseEntity<Order> find(@PathVariable UUID id) {
         return ordersApplicationService.find(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

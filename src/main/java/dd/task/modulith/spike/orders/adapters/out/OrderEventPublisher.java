@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 @RequiredArgsConstructor
 class OrderEventPublisher implements OrderEventPort {
@@ -13,7 +15,7 @@ class OrderEventPublisher implements OrderEventPort {
     private final ApplicationEventPublisher publisher;
 
     @Override
-    public void orderPlaced(String orderId, String sku, int quantity) {
+    public void orderPlaced(UUID orderId, String sku, int quantity) {
         publisher.publishEvent(new OrderPlacedEvent(orderId, sku, quantity));
     }
 }

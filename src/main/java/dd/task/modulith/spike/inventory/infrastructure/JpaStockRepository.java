@@ -2,24 +2,26 @@ package dd.task.modulith.spike.inventory.infrastructure;
 
 import dd.task.modulith.spike.inventory.domain.model.Stock;
 import dd.task.modulith.spike.inventory.domain.port.StockRepository;
+import dd.task.modulith.spike.inventory.infrastructure.model.StockEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Repository
-class InMemoryStockRepository implements StockRepository {
+@RequiredArgsConstructor
+class JpaStockRepository implements StockRepository {
 
-    private final Map<String, Stock> stocks = new HashMap<>();
+    private final StockEntityRepository jpa;
 
     @Override
     public void save(Stock stock) {
-        stocks.put(stock.sku(), stock);
+        jpa.save(new StockEntity(stock.sku(), stock.quantity()));
     }
 
     @Override
     public Optional<Stock> findBySku(String sku) {
-        return Optional.ofNullable(stocks.get(sku));
+        return jpa.findById(sku)
+                .map(e -> new Stock(e.getSku(), e.getQuantity()));
     }
 }

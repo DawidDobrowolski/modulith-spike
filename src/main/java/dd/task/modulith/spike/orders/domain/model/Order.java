@@ -1,13 +1,15 @@
 package dd.task.modulith.spike.orders.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
+@AllArgsConstructor
 public class Order {
 
-    private final String id;
+    private final UUID id;
     private final String sku;
     private final int quantity;
 
@@ -18,7 +20,7 @@ public class Order {
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be positive");
         }
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.sku = sku;
         this.quantity = quantity;
     }

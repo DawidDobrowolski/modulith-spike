@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,9 +24,9 @@ public class OrdersApplicationService {
         return ordersDomainService.place(sku, quantity);
     }
 
-    public Optional<Order> find(String id) {
-        if (id == null || id.isBlank()) {
-            throw new IllegalArgumentException("Order ID must not be blank");
+    public Optional<Order> find(UUID id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Order ID must not be null");
         }
         return ordersDomainService.find(id);
     }

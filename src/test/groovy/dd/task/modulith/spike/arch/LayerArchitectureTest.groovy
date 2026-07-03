@@ -1,8 +1,10 @@
-package dd.task.modulith.spike
+package dd.task.modulith.spike.arch
 
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition
+import dd.task.modulith.spike.AbstractTest
+import dd.task.modulith.spike.ModulithSpikeApplication
 import org.springframework.modulith.core.ApplicationModules
 import spock.lang.Shared
 import spock.lang.Unroll

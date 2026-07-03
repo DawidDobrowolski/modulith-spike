@@ -1,3 +1,5 @@
 package dd.task.modulith.spike.shared.events;
 
-public record OrderPlacedEvent(String orderId, String sku, int quantity) {}
+import java.util.UUID;
+
+public record OrderPlacedEvent(UUID orderId, String sku, int quantity) {}

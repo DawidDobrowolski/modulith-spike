@@ -3,3 +3,17 @@ spring:
     name: modulith-spike
   modulith:
     detection-strategy: dd.task.modulith.spike.infrastructure.config.CustomModuleDetectionStrategy
+  datasource:
+    url: jdbc:postgresql://localhost:5432/modulith
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml

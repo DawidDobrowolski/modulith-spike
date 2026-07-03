@@ -1,5 +1,7 @@
-package dd.task.modulith.spike
+package dd.task.modulith.spike.arch
 
+import dd.task.modulith.spike.AbstractTest
+import dd.task.modulith.spike.ModulithSpikeApplication
 import dd.task.modulith.spike.inventory.adapters.in.InventoryFacade
 import dd.task.modulith.spike.shared.events.OrderPlacedEvent
 import org.springframework.modulith.core.ApplicationModules

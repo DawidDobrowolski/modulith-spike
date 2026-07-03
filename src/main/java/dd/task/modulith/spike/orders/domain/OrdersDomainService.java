@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class OrdersDomainService {
         return order;
     }
 
-    public Optional<Order> find(String id) {
+    public Optional<Order> find(UUID id) {
         return orderRepository.findById(id);
     }
 }
