@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                       https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="modulith-create-even_publication" author="dawid.dobrowolski">
+        <createTable tableName="EVENT_PUBLICATION" schemaName="modulith">
+            <column name="ID" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="COMPLETION_DATE" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="EVENT_TYPE" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LISTENER_ID" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PUBLICATION_DATE" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERIALIZED_EVENT" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(20)"/>
+            <column name="COMPLETION_ATTEMPTS" type="INT"/>
+            <column name="LAST_RESUBMISSION_DATE" type="TIMESTAMP WITH TIME ZONE"/>
+        </createTable>
+
+        <createIndex indexName="EVENT_PUBLICATION_BY_LISTENER_ID_IDX" tableName="EVENT_PUBLICATION" schemaName="modulith">
+            <column name="LISTENER_ID"/>
+        </createIndex>
+
+        <createIndex indexName="EVENT_PUBLICATION_BY_COMPLETION_DATE_IDX" tableName="EVENT_PUBLICATION" schemaName="modulith">
+            <column name="COMPLETION_DATE"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

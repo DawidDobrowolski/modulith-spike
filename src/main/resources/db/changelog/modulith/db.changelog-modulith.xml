@@ -4,8 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="db/changelog/modulith/db.changelog-modulith.xml"/>
-    <include file="db/changelog/inventory/db.changelog-inventory.xml"/>
-    <include file="db/changelog/orders/db.changelog-orders.xml"/>
+    <include file="/db/changelog/modulith/changesets/000-create-modulith-schema.xml"/>
+    <include file="/db/changelog/modulith/changesets/001-create-event-publication-table.xml"/>
 
 </databaseChangeLog>

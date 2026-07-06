@@ -3,8 +3,11 @@ package dd.task.modulith.spike.e2e
 import dd.task.modulith.spike.inventory.application.InventoryApplicationService
 import dd.task.modulith.spike.inventory.infrastructure.StockEntityRepository
 import dd.task.modulith.spike.orders.infrastructure.OrderEntityRepository
+import org.awaitility.Awaitility
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
+
+import java.util.concurrent.TimeUnit
 
 class OrderPlacementE2E extends AbstractE2E {
 
@@ -60,7 +63,9 @@ class OrderPlacementE2E extends AbstractE2E {
             quantity == 3
         }
 
-        and: "stock deducted via OrderPlacedEvent (synchronous listener)"
-        stockEntityRepository.findById(testSku).orElseThrow().quantity == 7
+        and: "stock deducted asynchronously via OrderPlacedEvent"
+        Awaitility.await().atMost(5, TimeUnit.SECONDS).untilAsserted {
+            stockEntityRepository.findById(testSku).orElseThrow().quantity == 7
+        }
     }
 }

@@ -4,6 +4,7 @@ import dd.task.modulith.spike.orders.domain.model.Order;
 import dd.task.modulith.spike.orders.domain.OrdersDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -14,6 +15,7 @@ public class OrdersApplicationService {
 
     private final OrdersDomainService ordersDomainService;
 
+    @Transactional
     public Order place(String sku, int quantity) {
         if (sku == null || sku.isBlank()) {
             throw new IllegalArgumentException("SKU must not be blank");
@@ -24,6 +26,7 @@ public class OrdersApplicationService {
         return ordersDomainService.place(sku, quantity);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Order> find(UUID id) {
         if (id == null) {
             throw new IllegalArgumentException("Order ID must not be null");

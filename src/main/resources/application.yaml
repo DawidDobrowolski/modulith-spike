@@ -3,6 +3,11 @@ spring:
     name: modulith-spike
   modulith:
     detection-strategy: dd.task.modulith.spike.infrastructure.config.CustomModuleDetectionStrategy
+    events:
+      jdbc:
+        schema-initialization:
+          enabled: false
+        schema: modulith
   datasource:
     url: jdbc:postgresql://localhost:5432/modulith
     username: postgres
@@ -15,5 +20,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: modulith
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
