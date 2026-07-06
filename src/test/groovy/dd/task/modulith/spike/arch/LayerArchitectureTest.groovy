@@ -35,11 +35,9 @@ class LayerArchitectureTest extends AbstractTest {
         [module, from, to] << discoveredModules.collectMany { m ->
             [
                     [m, "domain", "application"],
-                    [m, "domain", "infrastructure"],
                     [m, "domain", "adapters.in"],
                     [m, "domain", "adapters.out"],
 
-                    [m, "application", "infrastructure"],
                     [m, "application", "adapters.in"],
                     [m, "application", "adapters.out"],
 

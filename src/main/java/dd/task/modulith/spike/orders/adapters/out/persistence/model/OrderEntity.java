@@ -1,4 +1,4 @@
-package dd.task.modulith.spike.orders.infrastructure.model;
+package dd.task.modulith.spike.orders.adapters.out.persistence.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

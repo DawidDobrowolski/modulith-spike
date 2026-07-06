@@ -1,8 +1,8 @@
-package dd.task.modulith.spike.inventory.infrastructure;
+package dd.task.modulith.spike.inventory.adapters.out.persistence;
 
+import dd.task.modulith.spike.inventory.adapters.out.persistence.model.StockEntity;
 import dd.task.modulith.spike.inventory.domain.model.Stock;
 import dd.task.modulith.spike.inventory.domain.port.StockRepository;
-import dd.task.modulith.spike.inventory.infrastructure.model.StockEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

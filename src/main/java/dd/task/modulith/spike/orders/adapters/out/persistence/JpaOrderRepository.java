@@ -1,8 +1,8 @@
-package dd.task.modulith.spike.orders.infrastructure;
+package dd.task.modulith.spike.orders.adapters.out.persistence;
 
+import dd.task.modulith.spike.orders.adapters.out.persistence.model.OrderEntity;
 import dd.task.modulith.spike.orders.domain.model.Order;
 import dd.task.modulith.spike.orders.domain.port.OrderRepository;
-import dd.task.modulith.spike.orders.infrastructure.model.OrderEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -2,7 +2,7 @@ package dd.task.modulith.spike.inventory.it
 
 import dd.task.modulith.spike.AbstractDB
 import dd.task.modulith.spike.inventory.application.InventoryApplicationService
-import dd.task.modulith.spike.inventory.infrastructure.StockEntityRepository
+import dd.task.modulith.spike.inventory.adapters.out.persistence.StockEntityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.modulith.test.ApplicationModuleTest
 

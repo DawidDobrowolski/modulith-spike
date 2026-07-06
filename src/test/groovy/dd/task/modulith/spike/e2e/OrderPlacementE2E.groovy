@@ -1,8 +1,8 @@
 package dd.task.modulith.spike.e2e
 
 import dd.task.modulith.spike.inventory.application.InventoryApplicationService
-import dd.task.modulith.spike.inventory.infrastructure.StockEntityRepository
-import dd.task.modulith.spike.orders.infrastructure.OrderEntityRepository
+import dd.task.modulith.spike.inventory.adapters.out.persistence.StockEntityRepository
+import dd.task.modulith.spike.orders.adapters.out.persistence.OrderEntityRepository
 import org.awaitility.Awaitility
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType

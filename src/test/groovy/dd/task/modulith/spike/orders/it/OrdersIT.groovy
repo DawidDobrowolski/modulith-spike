@@ -4,7 +4,7 @@ import dd.task.modulith.spike.AbstractDB
 import dd.task.modulith.spike.inventory.application.InventoryApplicationService
 import dd.task.modulith.spike.orders.application.OrdersApplicationService
 import dd.task.modulith.spike.orders.domain.OrderRejectedException
-import dd.task.modulith.spike.orders.infrastructure.OrderEntityRepository
+import dd.task.modulith.spike.orders.adapters.out.persistence.OrderEntityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.modulith.test.ApplicationModuleTest
 
