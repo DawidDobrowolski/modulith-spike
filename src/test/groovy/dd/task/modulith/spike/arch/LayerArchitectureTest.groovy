@@ -21,7 +21,30 @@ class LayerArchitectureTest extends AbstractTest {
             .collect { it.identifier.toString() }
 
     @Unroll
-    def "in module '#module' layer '#from' should not depend on '#to'"() {
+    def "'#from' layer should not depend on '#to' across all modules"() {
+        when:
+        ArchRuleDefinition.noClasses().that().resideInAPackage("..${from}..")
+                .should().dependOnClassesThat().resideInAPackage("..${to}..")
+                .allowEmptyShould(true)
+                .check(classes)
+
+        then:
+        noExceptionThrown()
+
+        where:
+        from          | to
+        "domain"      | "application"
+        "domain"      | "adapters.in"
+        "domain"      | "adapters.out"
+        "domain"      | "shared"
+
+        "application" | "adapters.in"
+        "application" | "adapters.out"
+        "application" | "shared"
+    }
+
+    @Unroll
+    def "in module '#module' adapter '#from' should not depend on '#to'"() {
         when:
         ArchRuleDefinition.noClasses().that().resideInAPackage("..${module}.${from}..")
                 .should().dependOnClassesThat().resideInAPackage("..${module}.${to}..")
@@ -34,13 +57,6 @@ class LayerArchitectureTest extends AbstractTest {
         where:
         [module, from, to] << discoveredModules.collectMany { m ->
             [
-                    [m, "domain", "application"],
-                    [m, "domain", "adapters.in"],
-                    [m, "domain", "adapters.out"],
-
-                    [m, "application", "adapters.in"],
-                    [m, "application", "adapters.out"],
-
                     [m, "adapters.in", "adapters.out"],
                     [m, "adapters.out", "adapters.in"]
             ]

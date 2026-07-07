@@ -102,6 +102,17 @@ Synchronous calls use the Facade pattern — `orders` depends only on `Inventory
 
 Asynchronous events are delivered via Spring Modulith's JDBC-backed outbox. The `modulith.event_publication` table stores each event until its listener acknowledges it, surviving application restarts.
 
+## Test types
+
+| Type | Location | Tool | What it tests |
+|---|---|---|---|
+| Unit | `order/domain`, `inventory/domain` | Spock + Mocks | Domain logic in isolation — no Spring, no DB, ports mocked |
+| Integration | `order/it`, `inventory/it` | Spock + `@ApplicationModuleTest` + Testcontainers | Single module bootstrapped with its direct dependencies, real DB |
+| E2E | `e2e` | Spock + `@SpringBootTest` + Testcontainers | Full application over HTTP — verifies cross-module flows including async event delivery |
+| Architecture | `arch` | ArchUnit + Spring Modulith | Module boundary enforcement (`ModulesArchitectureTest`) and layer isolation within modules (`LayerArchitectureTest`) |
+
+`@ApplicationModuleTest(DIRECT_DEPENDENCIES)` boots only the tested module and its direct neighbours — faster feedback than a full context, wider than a pure unit test.
+
 ## Database schemas
 
 | Schema      | Contents                                                      |

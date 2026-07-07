@@ -2,8 +2,8 @@ package dd.task.modulith.spike.arch
 
 import dd.task.modulith.spike.AbstractTest
 import dd.task.modulith.spike.ModulithSpikeApplication
-import dd.task.modulith.spike.inventory.adapters.in.InventoryFacade
-import dd.task.modulith.spike.shared.events.OrderPlacedEvent
+import dd.task.modulith.spike.inventory.adapter.in.InventoryFacade
+import dd.task.modulith.spike.shared.event.OrderPlacedEvent
 import org.springframework.modulith.core.ApplicationModules
 import spock.lang.Shared
 
@@ -20,7 +20,7 @@ class ModulesArchitectureTest extends AbstractTest {
     def "modules are correctly detected"() {
         expect:
         modules.collect { it.identifier.toString() }
-                .containsAll(["orders", "inventory", "shared"])
+                .containsAll(["order", "inventory", "shared"])
     }
 
     def "inventory exposes InventoryFacade"() {
